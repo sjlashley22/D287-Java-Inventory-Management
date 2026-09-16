@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Part Form</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Inhouse Part Detail</h1>
+<form action="#" th:action="@{/showFormAddInPart}" th:object="${inhousepart}" method="POST"}>
+
+<!-- Add hidden form field to handle update -->
+    <p><input type="hidden" th:field="*{id}"/></p>
+
+    <p><label>Name:</label><br><input type="text" th:field="*{name}" class="form-control mb-4 col-4"/></p>
+
+    <p><label>Price:</label><br><input type="text" th:field="*{price}" class="form-control mb-4 col-4"/></p>
+    <p th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price Error</p>
+
+    <p><label>Inventory:</label><br><input type="text" th:field="*{inv}" class="form-control mb-4 col-4"/></p>
+    <p th:if="${#fields.hasErrors('inv')}" th:errors="*{inv}">Inventory Error</p>
+
+    <p><label>Part ID:</label><br><input type="text" th:field="*{partId}" class="form-control mb-4 col-4"/></p>
+
+    <p><label>Minimum Inventory:</label><br><input type="text" th:field="*{min}" class="form-control mb-4 col-4"/></p>
+    <p th:if="${#fields.hasErrors('min')}" th:errors="*{min}">Min Error</p>
+
+    <p><label>Maximum Inventory:</label><br><input type="text" th:field="*{max}" class="form-control mb-4 col-4"/></p>
+    <p th:if="${#fields.hasErrors('max')}" th:errors="*{max}">Max Error</p>
+
+<p><input type="submit" value="Submit" /></p>
+</form>
+<p><errors path="price" cssClass=""error/><p>
+
+<a href="http://localhost:8080/">Link
+    to Main Screen</a>
+</body>
+</html>
